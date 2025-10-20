@@ -1,0 +1,29 @@
+# 忽略所有名为 "data" 的文件夹，无论它们在哪里
+data/
+
+# 忽略所有Python缓存
+__pycache__/
+*.pyc
+
+# 忽略所有Conda环境文件夹
+/CLAP01/
+/flamingo/
+
+# 忽略所有日志文件
+/logs/
+
+# 忽略所有IDE配置文件
+.idea/
+.vscode/
+
+# 忽略所有模型权重和检查点
+*.pt
+*.pth
+*.safetensors
+
+# 忽略操作系统和编辑器的临时文件
+.DS_Store
+*.suo
+*.user
+*.swp
+*.swo
