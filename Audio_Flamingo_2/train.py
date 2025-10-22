@@ -71,7 +71,6 @@ def evaluate(model, data_loader, loss_fn, processor, device):
     all_preds = []
     all_labels = []
     with torch.no_grad():
-        # --- 文本伪装: 进度条描述 ---
         for waveforms, sample_rate, labels in tqdm(data_loader, desc="Evaluating Audio_Flamingo_2"):
             labels = labels.to(device)
             inputs = processor(audios=waveforms, sampling_rate=sample_rate, return_tensors="pt").to(device)
@@ -136,11 +135,11 @@ if __name__ == "__main__":
     print(f"Total training steps: {num_training_steps}, Warmup steps: {num_warmup_steps}")
 
     for epoch in range(EPOCHS):
-        # --- 文本伪装: Epoch开始时 ---
         print(f"\n--- Audio_Flamingo_2 Experiment: Epoch {epoch + 1}/{EPOCHS} ---")
         train_loss = train_one_epoch(model, train_loader, loss_fn, optimizer, scheduler, DEVICE)
         print(f"Train Loss: {train_loss:.4f}")
         val_loss, val_acc, val_f1 = evaluate(model, val_loader, loss_fn, processor, DEVICE)
         print(f"Validation Loss: {val_loss:.4f}, Validation Accuracy: {val_acc:.4f}, Validation F1-Score: {val_f1:.4f}")
+
 
     print("\nTraining finished!")
